@@ -1,0 +1,4 @@
+Docker rmi -f ID >> delete
+Docker images
+docker run -p 127.0.0.1:80:80 -it 4/2
+docker build -t 4/2 ./
