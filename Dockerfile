@@ -35,6 +35,8 @@ RUN rm /var/www/html/index*
 COPY ./src/default /etc/nginx/sites-available/default
 COPY ./src/wordpress /etc/nginx/sites-enabled/wordpress
 COPY ./src/phpmyadmin /etc/nginx/sites-enabled/phpmyadmin
+COPY ./src/key.sh /docker-entrypoint-initdb.d/
+COPY ./src/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 EXPOSE 443
