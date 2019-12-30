@@ -1,0 +1,4 @@
+CREATE DATABASE wordpress;
+CREATE USER test@localhost IDENTIFIED BY "password";
+GRANT ALL PRIVILEGES ON WORDPRESS.* TO test@localhost;
+FLUSH PRIVILEGES;
