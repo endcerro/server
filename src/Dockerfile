@@ -16,8 +16,6 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install nginx procps default-mysql-server php php-fpm php-mbstring unzip vim php-mysql -y
 
-#RUN wget https://wordpress.org/latest.tar.gz -P /tmp
-#RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.0/phpMyAdmin-5.0.0-all-languages.zip -P /tmp
 COPY ./ressources/latest.tar.gz /tmp/latest.tar.gz
 COPY ./ressources/phpMyAdmin-5.0.0-all-languages.zip /tmp/phpMyAdmin-5.0.0-all-languages.zip 
 RUN unzip /tmp/phpMyAdmin-5.0.0-all-languages.zip -d /var/www/html/
