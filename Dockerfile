@@ -14,16 +14,14 @@ FROM debian:buster
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install nginx procps default-mysql-server php php-fpm php-mbstring unzip vim php-mysql -y
-
-RUN apt-get install curl -y
+RUN apt-get install nginx procps default-mysql-server php php-fpm php-mbstring unzip php-mysql curl -y
 
 COPY ./src/latest.tar.gz /tmp/latest.tar.gz
-COPY ./src/phpMyAdmin-5.0.0-all-languages.zip /tmp/phpMyAdmin-5.0.0-all-languages.zip 
-RUN unzip /tmp/phpMyAdmin-5.0.0-all-languages.zip -d /var/www/html/
-RUN mv /var/www/html/phpMyAdmin-5.0.0-all-languages /var/www/html/phpmyadmin
+#COPY ./src/phpMyAdmin-5.0.0-all-languages.zip /tmp/phpMyAdmin-5.0.0-all-languages.zip 
+COPY ./src/phpmyadmin.tar.gz /tmp/phpmyadmin.tar.gz
 RUN mkdir /var/www/html/wordpress
 RUN tar xzf /tmp/latest.tar.gz --strip-components=1 -C /var/www/html/wordpress
+RUN tar xzf /tmp/phpmyadmin.tar.gz --strip-components=1 -C /var/www/html/
 
 COPY ./src/test.sql /docker-entrypoint-initdb.d/
 COPY ./src/init.sh /docker-entrypoint-initdb.d/
